@@ -1,0 +1,306 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>APP IAJA</title>
+		<!-- Tell the browser to be responsive to screen width -->
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1" />
+
+		<!-- v4.0.0-alpha.6 -->
+		<link rel="stylesheet" href="dist/bootstrap/css/bootstrap.min.css">
+
+		<!-- Google Font -->
+		<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+		<!-- Theme style -->
+		<link rel="stylesheet" href="dist/css/style.css">
+		<link rel="stylesheet" href="dist/css/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="dist/css/et-line-font/et-line-font.css">
+		<link rel="stylesheet" href="dist/css/themify-icons/themify-icons.css">
+
+		<!-- DataTables -->
+		<link rel="stylesheet" href="dist/plugins/datatables/css/dataTables.bootstrap.min.css">
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]--> 
+		<style type="text/css">
+			/*
+			th {font-size: 12px; } 
+			td {font-size: 12px; } 
+			*/
+			table.dataTable { 
+				border-collapse: collapse !important;   /*separate*/
+			}
+			 
+			table.dataTable tbody tr {
+				line-height: unset; 
+				padding:5px 2px 5px 5px; 
+			}
+			table.dataTable thead tr th {
+				vertical-align: middle;
+				line-height: unset; 
+				padding:5px 5px 5px 5px; 
+			}
+			table.dataTable tbody tr td {
+				vertical-align: middle;
+				line-height: unset; 
+				padding:5px 5px 5px 5px; 
+			} 
+			.dataTables_paginate{ 
+				font-size:14px;
+				height:auto;
+				overflow: auto;
+			}
+		</style>
+
+
+		<!-- jQuery 3 --> 
+		<script src="dist/js/jquery.min.js"></script> 
+
+		<!-- v4.0.0-alpha.6 --> 
+		<!--
+		<script src="dist/bootstrap/js/bootstrap.min.js"></script> 
+		-->
+		<!-- PHONEGAP --> 
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript">
+			app.initialize();
+		</script>
+
+        <!-- template --> 
+        <script src="dist/js/niche.js"></script> 
+
+		<!-- DataTable --> 
+		<script src="dist/plugins/datatables/jquery.dataTables.min.js"></script> 
+		<script src="dist/plugins/datatables/dataTables.bootstrap.min.js"></script> 
+ 
+ 
+		<script src="js/config.js"></script> 
+		<script src="js/verifica.js"></script>
+	
+		<script src="js/funcoes.js"></script>
+		<script src="js/funcoes-dados.js"></script>
+		
+		<input type="hidden" name="qtde_tabelas"  id="qtde_tabelas" value="0">
+		<input type="hidden" name="qtde_tabelas_conta"  id="qtde_tabelas_conta" value="0">
+		
+		<script type="text/javascript">
+			$(document).ready(function()
+			{
+				//Se esta rodando no App ou no Browser
+				window.isphone = false;
+
+				if(document.URL.indexOf("http://") === -1 && document.URL.indexOf("https://") === -1)
+				{
+					window.isphone = true;
+				}         
+				if( window.isphone )
+				{
+					document.addEventListener("deviceready", onDeviceReady, false);
+				}
+				else
+				{
+					onDeviceReady();
+				}
+			});
+
+			function alertDismissed()
+			{
+			    // do something
+			}
+
+			//Funcões e configurações
+			function onDeviceReady()
+			{
+			    var info
+			    var networkState = navigator.connection.type;
+			    
+                //Sem conexão
+                if(networkState == 'none')
+                {
+                    navigator.notification.alert('¡Este contenido no se puede ver! ¡Es necesario estar conectado a Internet!', alertDismissed, 'Atención', 'Cerrar');
+                    window.location.href='index.html';
+                    exit;
+                }
+                //Conexão desconhecida
+                else if(networkState == 'unknown')
+                {
+                    navigator.notification.alert('¡Este contenido no se puede ver! ¡Es necesario estar conectado a Internet!', alertDismissed, 'Atención', 'Cerrar');
+                    window.location.href='index.html';
+                    exit;
+                }
+                //Conexão genérica
+                else if(networkState == 'cell')
+                {
+                    navigator.notification.alert('¡Este contenido no se puede ver correctamente! ¡Requiere una mejor conexión a Internet!', alertDismissed, 'Atención', 'Cerrar');
+                    window.location.href='index.html';
+                    exit;
+                }
+                //Conexão 2G
+                else if(networkState == 'cell_2g')
+                {
+                    navigator.notification.alert('¡Este contenido no se puede ver correctamente! ¡Requiere una mejor conexión a Internet!', alertDismissed, 'Atención', 'Cerrar');
+                    window.location.href='index.html';
+                    exit;
+                }
+                else
+                {
+
+					//========= get Dados JSON =============//
+					var params = location.getQueryParams();
+					//var Menu =  params['Menu'] ;  
+					if(params['nomeusuario'] != undefined  && params['nomeusuario'] != null && params['nomeusuario'] != 'null' && params['nomeusuario'] != '' ){
+						$('#nomeUsuario').empty().html(params['nomeusuario']); 
+					}  
+					if(params['Url'] != undefined  && params['Url'] != null && params['Url'] != 'null' && params['Url'] != '' ){
+						var Url = descodifica(params['Url']);  
+						console.log(Url);
+						if(verifica.verificaRegistro(servidor,device.uuid )){
+							renderizador.carregaDadosDaGrid(Url,device.uuid );
+						}else{
+							window.location.href="login.html";
+						} 
+						// console.log( Url)  
+					}else{
+						window.location.href="menu_dados.html";
+					}   
+				}
+			}
+		</script>  
+	</head>
+	<body class="skin-blue sidebar-mini">
+		<div class="wrapper boxed-wrapper">
+			<header class="main-header">  
+				<!-- Header Navbar: style can be found in header.less -->
+				<nav class="navbar blue-bg fixed-top navbar-static-top"> 
+					<!-- Sidebar toggle button-->
+					<ul class="nav navbar-nav pull-left" style="line-height: 1.0;">
+						<li><a class="sidebar-toggle" data-toggle="push-menu" href=""></a> </li>
+					</ul>
+					<!-- Logo --> 
+					<a href="index.html" > 
+					<!-- logo for regular state and mobile devices --> 
+					<label style="margin-bottom: 1px;padding:5px 10px 0px 0px; background-color:#2f3742;"   ><img style="width:50px;" src="dist/img/logo.png" alt=""></label> 
+					</a> 
+					<br/>
+					<label class="text-white" style="padding-top:0px;margin-bottom: 0px;">
+						<span id="nomeUsuario" style="font-size:14px;font-weigh:300;"></span>
+					</label>
+				</nav>
+			</header>
+			<!-- Left side column. contains the logo and sidebar -->
+			<aside class="main-sidebar"> 
+				<!-- sidebar: style can be found in sidebar.less -->
+				<div class="sidebar"> 
+					<!-- Sidebar user panel --> 
+					<!-- sidebar menu: : style can be found in sidebar.less -->
+					<ul class="sidebar-menu" data-widget="tree">
+						<li class="header"></li>
+						<li> <a href="home.html"> <i class="ti-home"></i> <span>HOME</span> </a></li>
+						<li class="linklogado" style="display:none;"> <a href="menu_dados.html"> <i class="fa fa-money"></i> <span>DATOS FINANCIEROS</span> </a></li>
+						<li> <a href="quemsomos.html"> <i class="fa fa-users"></i> <span>QUIÉNES SOMOS</span> </a></li>
+						<!--
+						<li> <a href="faq.html"> <i class="fa fa-comments-o"></i> <span>FAQ</span> </a></li>
+						-->
+						<li> <a href="suporte.html"> <i class="fa fa-cogs"></i> <span>SOPORTE</span> <span class="pull-right-container"> </span> </a></li>
+						<li> <a href="planos.html"> <i class="fa fa-wpforms"></i> <span>PLANES</span> <span class="pull-right-container"> </span> </a></li>
+						<li> <a href="sobre.html"> <i class="fa fa-university"></i> <span>SOBRE</span> <span class="pull-right-container"> </span> </a></li>
+						<li> <a href="login.html"> <i class="fa fa-user-o"></i> <span>LOGIN</span> <span class="pull-right-container"> </span> </a></li>
+					</ul>
+				</div>
+				<!-- /.sidebar --> 
+			</aside>
+  
+			<!-- Content Wrapper. Contains page content -->
+			<div class="content-wrapper"> 
+				<!-- Content Header (Page header) -->
+				<div class="content-header sty-one" style="padding: 5px 15px 1px 15px;">
+					<h5 class="text-black" style="font-weight:400;font-size:20px;text-align:center; line-height: 1.0;"  id="tituloMenu" ></h5>
+					<!--
+					<ol class="breadcrumb">
+						<li><a href="index.html">Home</a></li>
+						<li><i class="fa fa-angle-right"></i> Resumo</li>
+					</ol>
+					-->
+				</div>
+
+				<!-- Main content -->
+				<div class="content" style="padding-top: 10px;">
+
+					<div class="row" id="caixaAnteriorProximo">
+						<div class="col-lg-12">
+							<div class="info-box">   
+								<p>
+									<label class="anterior" style="width:80px;float:left;  display:none; position:relative;">
+										<a class="btn btn-secondary" href="#" ><i class="fa fa-mail-reply"></i>  Mês Anterior</a>
+									</label> 
+									<label class="proximo" style="width:80px;display:none;float:right; position:relative;">
+										<a class="btn btn-secondary" href="#" style="float:right;" >Próximo Mês  <i class="fa fa-mail-forward"></i></a>
+									</label>
+								</p>
+							</div>
+						</div>  
+					</div>
+
+					<div class="row" id="resumoLiquido" style="display:none;" >
+						<div class="col-lg-12">
+							<div class="info-box" style="min-height: 30px">
+								<div class="row">
+									<div class="col-lg-12">
+										<h4 class="text-black m-b-1">Resumen Liquido</h4>
+										<div class="row m-t-2">
+
+											<!-- /.col -->
+											<div class="col-lg-12">
+												<div class="info-box bg-orange" style="min-height: 30px" id="caixalaranja">
+													<!--
+													<div class="info-box-content">
+														<h5 class="info-box-text text-white">Saldo Geral</h5>
+														<h4 class="text-white" style="text-align:center;" id="saldo">R$ 9.999,99</h4>
+														<span class="progress-description text-white"> Relátorio de toda a contribuição  </span> 
+													</div>
+													-->
+													<!-- /.info-box-content --> 
+												</div>
+												<!-- /.info-box --> 
+											</div>
+											<!-- /.col --> 
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+					</div> 
+					<section class="info-box" id="tabeladinamica" style="display:none;"> 
+			 
+						 
+					</section> 
+					<section class="info-box" id="tabeladinamica2" style="display:none;">
+		 
+					</section>
+					<section style="text-align:center;">
+						<img style="width:30%;" src="loading-ring.gif" id="carregando">
+					</section>
+					<div class="row">
+						<div class="col-lg-12">
+							<div style="text-align:center;">
+								<a class="btn btn-lg btn-primary" id="linkVoltar" href="#" >Regreso</a>
+							</div>
+						</div>  
+					</div>  
+				</div>
+				<!-- /.content --> 
+			</div>
+			<!-- /.content-wrapper -->
+			<div id="infoTabelas" style="display:none;"></div>
+		</div>
+		<!-- ./wrapper --> 
+
+	</body>
+</html>

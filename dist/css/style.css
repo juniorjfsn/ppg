@@ -2983,9 +2983,12 @@ small.text-muted {
 	background-color: #e7e7e7
 }
 .btn-primary{
+	/*
 	background-color: #5867dd;
 	border-color: #4857d0
-}
+	*/
+	background-color: #0073b7 !important;
+	}
 caption button.btn-default{
 	background-color: #5867dd;
 	border-color: #4857d0;

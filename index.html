@@ -36,6 +36,9 @@
 
         <script src="js/main.js"></script>
         
+
+
+		<script type="text/javascript" src="js/aes-js.js"></script>
         <script src="js/config.js"></script>
 		<script src="js/verifica.js"></script>		
         
@@ -77,39 +80,52 @@
             var info
             var networkState = navigator.connection.type;
             
-                //Sem conexão
-                if(networkState == 'none')
-                {
-                    navigator.notification.alert('¡Este contenido no se puede ver! ¡Es necesario estar conectado a Internet!', alertDismissed, 'Atención', 'Cerrar');
-                    window.location.href='index.html';
-                    exit;
-                }
-                //Conexão desconhecida
-                else if(networkState == 'unknown')
-                {
-                    navigator.notification.alert('¡Este contenido no se puede ver! ¡Es necesario estar conectado a Internet!', alertDismissed, 'Atención', 'Cerrar');
-                    window.location.href='index.html';
-                    exit;
-                }
-                //Conexão genérica
-                else if(networkState == 'cell')
-                {
-                    navigator.notification.alert('¡Este contenido no se puede ver correctamente! ¡Requiere una mejor conexión a Internet!', alertDismissed, 'Atención', 'Cerrar');
-                    window.location.href='index.html';
-                    exit;
-                }
-                //Conexão 2G
-                else if(networkState == 'cell_2g')
-                {
-                    navigator.notification.alert('¡Este contenido no se puede ver correctamente! ¡Requiere una mejor conexión a Internet!', alertDismissed, 'Atención', 'Cerrar');
-                    window.location.href='index.html';
-                    exit;
-                }
-                else
-                {
+            //Sem conexão
+            if(networkState == 'none')
+            {
+                navigator.notification.alert('¡Este contenido no se puede ver! ¡Es necesario estar conectado a Internet!', alertDismissed, 'Atención', 'Cerrar');
+                window.location.href='index.html';
+                exit;
+            }
+            //Conexão desconhecida
+            else if(networkState == 'unknown')
+            {
+                navigator.notification.alert('¡Este contenido no se puede ver! ¡Es necesario estar conectado a Internet!', alertDismissed, 'Atención', 'Cerrar');
+                window.location.href='index.html';
+                exit;
+            }
+            //Conexão genérica
+            else if(networkState == 'cell')
+            {
+                navigator.notification.alert('¡Este contenido no se puede ver correctamente! ¡Requiere una mejor conexión a Internet!', alertDismissed, 'Atención', 'Cerrar');
+                window.location.href='index.html';
+                exit;
+            }
+            //Conexão 2G
+            else if(networkState == 'cell_2g')
+            {
+                navigator.notification.alert('¡Este contenido no se puede ver correctamente! ¡Requiere una mejor conexión a Internet!', alertDismissed, 'Atención', 'Cerrar');
+                window.location.href='index.html';
+                exit;
+            }
+            else
+            {
+                    //============================================================//
+					// An example 128-bit key (16 bytes * 8 bits/byte = 128 bits)
+					var key = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ];
+
+					// Convert text to bytes 
+					var textBytes = aesjs.utils.utf8.toBytes(String(device.uuid));
+
+					// The counter is optional, and if omitted will begin at 1
+					var aesCtr = new aesjs.ModeOfOperation.ctr(key, new aesjs.Counter(5));
+					var encryptedBytes = aesCtr.encrypt(textBytes);
+					var encryptedHex = aesjs.utils.hex.fromBytes(encryptedBytes);
+                    //============================================================//
+            	
                 //navigator.notification.alert(device.uuid, alertDismissed, 'RODOU!', 'Fechar');
                 
-                if(verifica.verificaRegistro(servidor,device.uuid))
+                if(verifica.verificaRegistro(servidor,encryptedHex))
                 {
                     window.location.href="menu_dados.html";
                 }

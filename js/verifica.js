@@ -61,7 +61,7 @@ var verifica;
 			}
 		}).done(function( data, textStatus, jqXHR ) { 
 			json = data ;   
-			if(!json.Registrado ){ 
+			if(json.Registrado ){ 
 				sugereLogout(json.Cpf);
 				retorno = true;
 			}else{

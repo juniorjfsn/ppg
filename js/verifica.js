@@ -4,7 +4,7 @@ var verifica;
 	//---------//
 	function verificaRegistro(servidor,imei){
 		var retorno = false;
-		var verlink = servidor+'/webapiiaja/VerificaLogin?imei='+imei ;
+		var verlink = servidor+'/webapippg/VerificaLogin?imei='+imei ;
 		console.log(verlink);
 		$.ajax({
 			url: verlink,
@@ -46,7 +46,7 @@ var verifica;
 	//---------//
 	function verificaRegistroLogout(servidor,imei){
 		var retorno = false;
-		var verlink = servidor+'/webapiiaja/VerificaLogin?imei='+imei ;
+		var verlink = servidor+'/webapippg/VerificaLogin?imei='+imei ;
 		console.log(verlink);
 		$.ajax({
 			url: verlink,
@@ -123,7 +123,7 @@ var autentica;
 
 	//---------//
 	function efetuarToken(token, imei) { 
-		var Url =  servidor+'/webapiiaja/ConfirmaAcesso?imei='+imei+'&codigo='+token+''  ;
+		var Url =  servidor+'/webapippg/ConfirmaAcesso?imei='+imei+'&codigo='+token+''  ;
 		console.log(Url);
 
 		var jqxhr = $.getJSON( Url , function() {
@@ -154,7 +154,7 @@ var autentica;
 	//---------//
 	function efetuarLogin(cpf, nascimento, imei){  
 		var newcpf = cpf.replace(/[^\d]+/g,'')
-		var Url = servidor+'/webapiiaja/Login?cpf='+newcpf+'&nascimento='+nascimento+'&imei='+imei+'';	
+		var Url = servidor+'/webapippg/Login?cpf='+newcpf+'&nascimento='+nascimento+'&imei='+imei+'';	
 		console.log(Url); 
 		var jqxhr1 = $.getJSON( Url  , function() {
 			console.log( "success" );
@@ -194,13 +194,13 @@ var autentica;
 	//---------//
 	function efetuarLogout(cpf,  imei){  
 		var newcpf = cpf.replace(/[^\d]+/g,'')
-		var Url = servidor + '/webapiiaja/Logout?imei='+imei+'';	
+		var Url = servidor + '/webapippg/Logout?imei='+imei+'';	
 		console.log(Url); 
 		var jqxhr1 = $.getJSON( Url  , function() {
 			console.log( "success" );
 		}).done(function(json) { 
 			console.log(JSON.stringify(json)); 
-			// {"Cod":0,"Msg":"Seu Aparelho foi desconecato do IAJA com sucesso !!","Url":"https://appiaja.adventistas.org/webapiiaja/MainMenu/imei="}
+			// {"Cod":0,"Msg":"Seu Aparelho foi desconecato do IAJA com sucesso !!","Url":"https://appiaja.adventistas.org/webapippg/MainMenu/imei="}
 			try {   
 				if (json.Cod === 0) {  
 					navigator.notification.alert(json.Msg, alertDismissed, 'Mensaje', 'Fechar'); 

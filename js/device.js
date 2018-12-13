@@ -3,6 +3,10 @@ var device;
     function uuid() { }
     device.uuid = uuid;
 })(device || (device = {}));
+ 
+
+var gitbub = null ;
+ 
 /*
 namespace device {
     export class uuid {

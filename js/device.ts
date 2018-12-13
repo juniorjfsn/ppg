@@ -4,6 +4,11 @@ namespace device {
 declare module "device" {
     export = device;
 }
+
+
+var gitbub ;
+
+
 /*
 namespace device { 
 	export class uuid { 

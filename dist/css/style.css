@@ -171,14 +171,14 @@ h6 {
 	margin-bottom: 5px;
 }
 a {
-	/*
-	color: #5867dd
-	*/
+	/* color: #5867dd */
+	color: #02528e ;
 }
 a:hover, a:active, a:focus {
 	outline: none;
 	text-decoration: none;
-	color: #7b88f3
+	/*color: #7b88f3;*/
+	color: #0373af;
 }
 .page-header {
 	margin: 10px 0 20px 0;
@@ -3268,7 +3268,8 @@ ul.plan-list li{
 }
 .nav>li>a:hover, .nav>li>a:active, .nav>li>a:focus {
 	color: #fff;
-	background: #4757d1
+	/*background: #4757d1*/
+	background: #53acd6  
 }
 .nav-pills>li>a {
 	border-radius: 0;

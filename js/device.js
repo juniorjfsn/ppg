@@ -3,12 +3,10 @@ var device;
     function uuid() { }
     device.uuid = uuid;
 })(device || (device = {}));
-<<<<<<< HEAD
+ 
 
 var gitbub ;
-
-=======
->>>>>>> master
+ 
 /*
 namespace device {
     export class uuid {

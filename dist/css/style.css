@@ -146,7 +146,8 @@ a:hover, a:active, a:focus {
 	min-height: 250px;
 	padding: 15px;
 	margin-right: auto;
-	margin-left: auto;
+	margin-left: auto;;
+	margin-top: 60PX;
 	padding-left: 15px;
 	padding-right: 15px
 }

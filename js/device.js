@@ -5,7 +5,7 @@ var device;
 })(device || (device = {}));
  
 
-var gitbub ;
+var gitbub = null ;
  
 /*
 namespace device {

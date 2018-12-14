@@ -101,7 +101,7 @@ var menurender;
 			$('#menu').empty().html( geraTabela(json,imei));
 			//console.log( "second success" );
 			$('#carregando').attr("src","");
-			$('#carregando').attr("display","none");
+			$('#carregando').css("display","none");
 		}).fail(function( jqxhr, textStatus, error ) {
 			var err = textStatus + ", " + error;
 			console.log( "Request Failed: " + err );

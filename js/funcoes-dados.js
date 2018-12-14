@@ -378,7 +378,7 @@ var renderizador;
 						});
 					}  
 					$('#carregando').attr("src","");
-					$('#carregando').attr("display","none");
+					$('#carregando').css("display","none");
 				});  
 			}else{  
 				navigator.notification.alert('Datos inaccesibles', alertDismissed, 'Erro', 'Cerrar'); 

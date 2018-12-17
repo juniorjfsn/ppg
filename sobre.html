@@ -1,11 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>APP IAJA</title>
-		<!-- Tell the browser to be responsive to screen width -->
-		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1" />
+        <title>APP PPG</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
 
 		<!-- v4.0.0-alpha.6 -->
 		<link rel="stylesheet" href="dist/bootstrap/css/bootstrap.min.css">
@@ -77,28 +76,28 @@
                 //Sem conexão
                 if(networkState == 'none')
                 {
-                    navigator.notification.alert('¡Este contenido no se puede ver! ¡Es necesario estar conectado a Internet!', alertDismissed, 'Atención', 'Cerrar');
+                    navigator.notification.alert('Es necesario estar conectado a Internet para acceder al contenido de esta App', alertDismissed, 'Atención', 'Cerrar');
                     window.location.href='index.html';
                     exit;
                 }
                 //Conexão desconhecida
                 else if(networkState == 'unknown')
                 {
-                    navigator.notification.alert('¡Este contenido no se puede ver! ¡Es necesario estar conectado a Internet!', alertDismissed, 'Atención', 'Cerrar');
+                    navigator.notification.alert('Es necesario estar conectado a Internet para acceder al contenido de esta App', alertDismissed, 'Atención', 'Cerrar');
                     window.location.href='index.html';
                     exit;
                 }
                 //Conexão genérica
                 else if(networkState == 'cell')
                 {
-                    navigator.notification.alert('¡Este contenido no se puede ver correctamente! ¡Requiere una mejor conexión a Internet!', alertDismissed, 'Atención', 'Cerrar');
+                    navigator.notification.alert('Es necesario estar conectado a Internet para acceder al contenido de esta App', alertDismissed, 'Atención', 'Cerrar');
                     window.location.href='index.html';
                     exit;
                 }
                 //Conexão 2G
                 else if(networkState == 'cell_2g')
                 {
-                    navigator.notification.alert('¡Este contenido no se puede ver correctamente! ¡Requiere una mejor conexión a Internet!', alertDismissed, 'Atención', 'Cerrar');
+                    navigator.notification.alert('Es necesario estar conectado a Internet para acceder al contenido de esta App', alertDismissed, 'Atención', 'Cerrar');
                     window.location.href='index.html';
                     exit;
                 }
@@ -158,7 +157,7 @@
 						-->
 						<li> <a href="suporte.html"> <i class="fa fa-cogs"></i> <span>SOPORTE</span> <span class="pull-right-container"> </span> </a></li>
 						<li> <a href="planos.html"> <i class="fa fa-wpforms"></i> <span>PLANES</span> <span class="pull-right-container"> </span> </a></li>
-						<li> <a href="sobre.html"> <i class="fa fa-university"></i> <span>SOBRE</span> <span class="pull-right-container"> </span> </a></li>
+						<li> <a href="sobre.html"> <i class="fa fa-university"></i> <span>ACERCA</span> <span class="pull-right-container"> </span> </a></li>
 						<li> <a href="login.html"> <i class="fa fa-user-o"></i> <span>LOGIN</span> <span class="pull-right-container"> </span> </a></li>
 					</ul>
 				</div>
@@ -169,10 +168,10 @@
 			<div class="content-wrapper"> 
 				<!-- Content Header (Page header) -->
 				<div class="content-header sty-one">
-					<h1 class="text-black">Sobre</h1>
+					<h1 class="text-black">Acerca</h1>
 					<ol class="breadcrumb">
 						<li><a href="index.html">Home</a></li>
-						<li><i class="fa fa-angle-right"></i> Sobre</li>
+						<li><i class="fa fa-angle-right"></i> Acerca</li>
 					</ol>
 				</div>
 		
@@ -182,12 +181,7 @@
 						<div class="col-12">
 							<div class="card">
 								<div class="card-body">
-									<!--
-									<h3>Sobre</h3>
-									<p style="text-align:justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla lobortis commodo augue, ac condimentum mauris elementum eu. Integer at bibendum risus, quis tempus nunc. Vestibulum consectetur purus eu porttitor feugiat. Nam blandit varius lectus, malesuada aliquam nisi molestie ut. Praesent id justo posuere, euismod felis quis, eleifend tellus. Aenean lacinia orci id neque mollis, ac vestibulum libero molestie. Quisque ullamcorper metus sed cursus lacinia.</p>
-
-									<p style="text-align:justify;">Nulla vitae auctor velit, et iaculis libero. Nullam vel viverra nibh. Cras ut tellus ut quam interdum ultrices sit amet at nisl. Pellentesque tortor enim, tristique dignissim diam in, egestas tempus felis. Morbi sit amet felis euismod, lacinia metus ut, ultricies nulla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed ut neque vel enim dictum molestie. Aenean feugiat iaculis mi vel blandit. Morbi nec cursus magna. Vivamus lobortis magna sit amet quam blandit, ut ultrices magna laoreet. Nunc nec egestas nunc, a semper nisi. Phasellus scelerisque ante diam, ac bibendum nisi vestibulum et. Duis posuere dui id mi congue, in volutpat sapien pellentesque. Praesent quis nisi id nibh maximus maximus quis in lorem.</p><br><br>
-									-->
+									
 									<h3>Ficha Técnica</h3>
 									<br>
 									<p style="text-align:justify;"><strong>Elias Silva</strong><br>
@@ -200,11 +194,11 @@
 
 									<p style="text-align:justify;"><strong>Rodrigo Dorval</strong><br>
 									<em>Supervisión y Revisión<br>
-									RDORVAL Soluções em Tecnologia</em></p>
+									RDORVAL Soluciones en Tecnología</em></p>
 									
 									<p style="text-align:justify;"><strong>Renan Maldonado / Nedir França</strong><br>
 									<em>Interfaz y Desarrollo<br>
-									RDORVAL Soluções em Tecnologia</em></p>
+									RDORVAL Soluciones en Tecnología</em></p>
 									
 								</div>
 							</div>
@@ -214,7 +208,7 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<div style="text-align:center;"> 
-							<a class="btn btn-lg btn-primary" href="home.html">Regreso</a>
+							<a class="btn btn-lg btn-primary" href="home.html">Volver</a>
 						</div>
 					</div>  
 				</div>     

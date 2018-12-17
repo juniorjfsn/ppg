@@ -1,12 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>APP IAJA</title>
-		<!-- Tell the browser to be responsive to screen width -->
-		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1" />
-
+        <title>APP PPG</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+        
 		<!-- v4.0.0-alpha.6 -->
 		<link rel="stylesheet" href="dist/bootstrap/css/bootstrap.min.css">
 
@@ -78,28 +77,28 @@
                 //Sem conexão
                 if(networkState == 'none')
                 {
-                    navigator.notification.alert('¡Este contenido no se puede ver! ¡Es necesario estar conectado a Internet!', alertDismissed, 'Atención', 'Cerrar');
+                    navigator.notification.alert('Es necesario estar conectado a Internet para acceder al contenido de esta App', alertDismissed, 'Atención', 'Cerrar');
                     window.location.href='index.html';
                     exit;
                 }
                 //Conexão desconhecida
                 else if(networkState == 'unknown')
                 {
-                    navigator.notification.alert('¡Este contenido no se puede ver! ¡Es necesario estar conectado a Internet!', alertDismissed, 'Atención', 'Cerrar');
+                    navigator.notification.alert('Es necesario estar conectado a Internet para acceder al contenido de esta App', alertDismissed, 'Atención', 'Cerrar');
                     window.location.href='index.html';
                     exit;
                 }
                 //Conexão genérica
                 else if(networkState == 'cell')
                 {
-                    navigator.notification.alert('¡Este contenido no se puede ver correctamente! ¡Requiere una mejor conexión a Internet!', alertDismissed, 'Atención', 'Cerrar');
+                    navigator.notification.alert('Es necesario estar conectado a Internet para acceder al contenido de esta App', alertDismissed, 'Atención', 'Cerrar');
                     window.location.href='index.html';
                     exit;
                 }
                 //Conexão 2G
                 else if(networkState == 'cell_2g')
                 {
-                    navigator.notification.alert('¡Este contenido no se puede ver correctamente! ¡Requiere una mejor conexión a Internet!', alertDismissed, 'Atención', 'Cerrar');
+                    navigator.notification.alert('Es necesario estar conectado a Internet para acceder al contenido de esta App', alertDismissed, 'Atención', 'Cerrar');
                     window.location.href='index.html';
                     exit;
                 }
@@ -160,7 +159,7 @@
 						-->
 						<li> <a href="suporte.html"> <i class="fa fa-cogs"></i> <span>SOPORTE</span> <span class="pull-right-container"> </span> </a></li>
 						<li> <a href="planos.html"> <i class="fa fa-wpforms"></i> <span>PLANES</span> <span class="pull-right-container"> </span> </a></li>
-						<li> <a href="sobre.html"> <i class="fa fa-university"></i> <span>SOBRE</span> <span class="pull-right-container"> </span> </a></li>
+						<li> <a href="sobre.html"> <i class="fa fa-university"></i> <span>ACERCA</span> <span class="pull-right-container"> </span> </a></li>
 						<li> <a href="login.html"> <i class="fa fa-user-o"></i> <span>LOGIN</span> <span class="pull-right-container"> </span> </a></li>
 					</ul>
 				</div>
@@ -198,7 +197,7 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<div style="text-align:center;"> 
-							<a class="btn btn-lg btn-primary" href="home.html">Regreso</a>
+							<a class="btn btn-lg btn-primary" href="home.html">Volver</a>
 						</div>
 					</div>  
 				</div>    

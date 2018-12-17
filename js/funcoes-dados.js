@@ -1,4 +1,4 @@
-﻿//========= dadosconta =============//
+//========= dadosconta =============//
 var dadosconta; 
 (function (dadosconta) {
 	//---------// 
@@ -323,8 +323,8 @@ var renderizador;
 			async : true,
 			statusCode: {
 				404: function() { 
-					navigator.notification.alert('Datos inaccesibles', alertDismissed, 'Erro', 'Cerrar'); 
-					console.log('Página inacessível');
+					navigator.notification.alert('Datos inaccesibles', alertDismissed, 'Error', 'Cerrar'); 
+					console.log('Pantalla inaccesible');
 				}
 			}
 		}).done(function( data, textStatus, jqXHR  ) {
@@ -341,8 +341,13 @@ var renderizador;
 			// $('#nome_usuario').empty().html(json.Nome);   
 			$('#tituloMenu').empty().html(json.Titulo); 
 			// $('#periodo').empty().html(json.Periodo); 
-			$('#nomeUsuario').empty().html(json.Nome); 
-			var UrlVolta = 'menu_dados.html?Url=' + codifica(json.UrlVolta + imei) + '&Menu=' ; 
+			
+            if(json.Nome != undefined  && json.Nome != null && json.Nome != 'null' && json.Nome != '' )
+            {
+                $('#nomeUsuario').empty().html(json.Nome);
+            }
+			
+            var UrlVolta = 'menu_dados.html?Url=' + codifica(json.UrlVolta + imei) + '&Menu=' ;
 			$('#linkVoltar').attr("href",UrlVolta);
 
 			
@@ -381,18 +386,18 @@ var renderizador;
 					$('#carregando').css("display","none");
 				});  
 			}else{  
-				navigator.notification.alert('Datos inaccesibles', alertDismissed, 'Erro', 'Cerrar'); 
+				navigator.notification.alert('Datos inaccesibles', alertDismissed, 'Error', 'Cerrar'); 
 			} 
 		}).fail(function(jqXHR, textStatus, errorThrown  ) {  
 			console.log('----------------');
-			console.log( "Falha na requisição de dados : ");
+			console.log( "Error en la solicitud de datos : ");
 			console.log(jqXHR); 
 			console.log('....');
 			console.log(textStatus);
 			console.log('....');
 			console.log(errorThrown);
 			console.log('----------------');  
-			navigator.notification.alert('No se pudo acceder a esta pantalla con sus respectivos datos', alertDismissed, 'Erro', 'Cerrar'); 
+			navigator.notification.alert('No se pudo acceder a esta pantalla con sus respectivos datos', alertDismissed, 'Error', 'Cerrar'); 
 			$('#tabeladinamica').css("display","none");
 		}).always(function() {
 			console.log( "complete" );

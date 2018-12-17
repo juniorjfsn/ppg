@@ -31,7 +31,7 @@ var verifica;
 		}).fail(function(jqXHR, textStatus, errorThrown  ) {  
 			/*
 			console.log('----------------');
-			console.log( "Falha na requisição de dados : ");
+			console.log( "Error en la solicitud de datos : ");
 			console.log(jqXHR); 
 			console.log('....');
 			console.log(textStatus);
@@ -71,7 +71,7 @@ var verifica;
 			
 		}).fail(function(jqXHR, textStatus, errorThrown  ) {  
 			console.log('----------------');
-			console.log( "Falha na requisição de dados : ");
+			console.log( "Error en la solicitud de datos : ");
 			console.log(jqXHR); 
 			console.log('....');
 			console.log(textStatus);
@@ -132,16 +132,16 @@ var autentica;
 			try {
 				if (json.Cod === 0) {
 					//alert(json.Msg);
-					navigator.notification.alert(json.Msg, alertDismissed, 'Mensaje', 'Fechar'); 
+					navigator.notification.alert(json.Msg, alertDismissed, 'Mensaje', 'Cerrar'); 
 					window.location.href="menu_dados.html";
 				} 
 				else if(json.Cod === 1) { 
-					navigator.notification.alert(json.Msg, alertDismissed, 'Atención', 'Fechar');
+					navigator.notification.alert(json.Msg, alertDismissed, 'Atención', 'Cerrar');
 				}
 				else if(json.Cod === 3) {
-					navigator.notification.alert(json.Msg, alertDismissed, 'Atención', 'Fechar'); 
+					navigator.notification.alert(json.Msg, alertDismissed, 'Atención', 'Cerrar'); 
 				}else if(json.Cod === 4) {
-					navigator.notification.alert(json.Msg, alertDismissed, 'Atención', 'Fechar'); 
+					navigator.notification.alert(json.Msg, alertDismissed, 'Atención', 'Cerrar'); 
 				} 
 			} catch (e) {
 				console.log(e.message); 
@@ -162,19 +162,19 @@ var autentica;
 			console.log(JSON.stringify(json)); 
 			try {  
 				if (json.Cod === 2) {  
-					navigator.notification.alert(json.Msg, alertDismissed, 'Mensaje', 'Fechar'); 
+					navigator.notification.alert(json.Msg, alertDismissed, 'Mensaje', 'Cerrar'); 
 					$('#LoginToken').css('display','block');
 					$('#login').css('display','none');
 				} 
 				else if(json.Cod === 1) {
-					navigator.notification.alert(json.Msg, alertDismissed, 'Atención', 'Fechar');  
+					navigator.notification.alert(json.Msg, alertDismissed, 'Atención', 'Cerrar');  
 				} else if(json.Cod === 3) {
-					navigator.notification.alert(json.Msg, alertDismissed, 'Atención', 'Fechar');  
+					navigator.notification.alert(json.Msg, alertDismissed, 'Atención', 'Cerrar');  
 
 				}else if(json.Cod === 4) {
-					navigator.notification.alert(json.Msg, alertDismissed, 'Atención', 'Fechar');   
+					navigator.notification.alert(json.Msg, alertDismissed, 'Atención', 'Cerrar');   
 				} else if(json.Cod === 0) { 
-					navigator.notification.alert(json.Msg, alertDismissed, 'Mensaje', 'Fechar'); 
+					navigator.notification.alert(json.Msg, alertDismissed, 'Mensaje', 'Cerrar'); 
 					window.location.href="menu_dados.html";
 				} 
 			} catch (e) {
@@ -183,7 +183,7 @@ var autentica;
 			console.log( "second success" );
 		}).fail(function( jqxhr, textStatus, error ) {
 			//alert('Servidor não encontrado!  : '   + Url);  
-			navigator.notification.alert('Servidor no encontrado!  : ', alertDismissed, 'Erro', 'Fechar');  
+			navigator.notification.alert('Servidor no encontrado!  : ', alertDismissed, 'Error', 'Cerrar');  
 			var err = textStatus + ", " + error;
 			console.log( "Request Failed: " + err );
 		}).always(function() {
@@ -203,10 +203,10 @@ var autentica;
 			// {"Cod":0,"Msg":"Seu Aparelho foi desconecato do IAJA com sucesso !!","Url":"https://appiaja.adventistas.org/webapippg/MainMenu/imei="}
 			try {   
 				if (json.Cod === 0) {  
-					navigator.notification.alert(json.Msg, alertDismissed, 'Mensaje', 'Fechar'); 
+					navigator.notification.alert(json.Msg, alertDismissed, 'Mensaje', 'Cerrar'); 
 					window.location.href="index.html";
 				} else if(json.Cod === 4) { 
-					navigator.notification.alert(json.Msg, alertDismissed, 'Mensaje', 'Fechar'); 
+					navigator.notification.alert(json.Msg, alertDismissed, 'Mensaje', 'Cerrar'); 
 					window.location.href="login.html";
 				} 
 			} catch (e) {
@@ -215,7 +215,7 @@ var autentica;
 			console.log( "second success" );
 		}).fail(function( jqxhr, textStatus, error ) {
 			//alert('Servidor não encontrado!  : '   + Url);  
-			navigator.notification.alert('Servidor no encontrado!  : ', alertDismissed, 'Erro', 'Fechar');  
+			navigator.notification.alert('Servidor no encontrado!  : ', alertDismissed, 'Error', 'Cerrar');  
 			var err = textStatus + ", " + error;
 			console.log( "Request Failed: " + err );
 		});  

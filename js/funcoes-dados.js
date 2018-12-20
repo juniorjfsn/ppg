@@ -315,6 +315,7 @@ var renderizador;
 	 
 	//---------//
 	function carregaDadosDaGrid(urljson,imei) {
+		$('#carregando').css("display","block");
 		$.ajax({
 			url: urljson,
 			method: "GET",

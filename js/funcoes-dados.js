@@ -315,7 +315,10 @@ var renderizador;
 	 
 	//---------//
 	function carregaDadosDaGrid(urljson,imei) {
+		$('#carregando').attr("src","loading-ring.gif");
 		$('#carregando').css("display","block");
+		$('#tabeladinamica').empty().html('');
+		$('#tabeladinamica').css("display","none");
 		$.ajax({
 			url: urljson,
 			method: "GET",

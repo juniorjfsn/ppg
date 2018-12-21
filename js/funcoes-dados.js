@@ -210,8 +210,7 @@ var renderizador;
 			var cab = tabe['cab'];
 			var dados = tabe['dados']; 
  
-			if(tabe['Resumo']){ 
-				// $('#saldo').empty().html(json.SaldoGeral);
+			if(tabe['Resumo']){  
 				
 				if(tabe.ResumoCor != null){
 					//console.log('tabe.ResumoCor : ' + tabe.ResumoCor );

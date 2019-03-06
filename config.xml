@@ -58,8 +58,8 @@
     <preference name="AllowInlineMediaPlayback" value="true" />
     <preference name="Orientation" value="portrait" />
     <preference name="BackupWebStorage" value="cloud" />
-    <preference name="FullScreen" value="true" />
-    <preference name="SetFullscreen" value="true" />
+    <preference name="FullScreen" value="false" />
+    <preference name="SetFullscreen" value="false" />
     <preference name="ShowTitle" value="false" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="EnableViewportScale" value="false" />
